@@ -1,11 +1,15 @@
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StatusBar, Text, View } from "react-native";
+import SignIn from "./src/pages/SignIn";
 
 export default function App() {
   return (
-    <View> 
-      <Text>Teste 02</Text>
-      <StatusBar backgroundColor="#1d1d2e" barStyle="light-content" translucent={false} />
+    <View>
+      <StatusBar
+        backgroundColor="#1d1d2e"
+        barStyle={"light-content"}
+        translucent={false}
+      />
+      <SignIn />
     </View>
   );
 }
-
