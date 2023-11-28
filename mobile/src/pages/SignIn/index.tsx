@@ -11,17 +11,17 @@ import {
 import { AuthContext } from "../../context/AuthContext";
 
 export default function SignIn() {
-  const { user } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (email === "" || password === "") {
       return;
     }
 
-    alert(password);
+    await signIn({ email, password });
   };
 
   return (
@@ -30,7 +30,6 @@ export default function SignIn() {
         style={styles.logo}
         source={require("../../assets/logoImage.png")}
       />
-      <Text>{user.name}</Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholderTextColor="#f0f0f0"
@@ -50,7 +49,7 @@ export default function SignIn() {
         />
 
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>acessar</Text>
+          <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
       </View>
     </View>
