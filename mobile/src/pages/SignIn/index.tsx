@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -6,20 +6,38 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Keyboard,
 } from "react-native";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function SignIn() {
+  const { user } = useContext(AuthContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    if (email === "" || password === "") {
+      return;
+    }
+
+    alert(password);
+  };
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.logo}
         source={require("../../assets/logoImage.png")}
       />
+      <Text>{user.name}</Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholderTextColor="#f0f0f0"
           style={styles.input}
           placeholder="Digite seu email"
+          value={email}
+          onChangeText={setEmail}
         />
 
         <TextInput
@@ -27,10 +45,12 @@ export default function SignIn() {
           style={styles.input}
           placeholder="Digite sua senha"
           secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
         />
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Acessar</Text>
+        <TouchableOpacity onPress={handleLogin} style={styles.button}>
+          <Text style={styles.buttonText}>acessar</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -74,6 +94,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: '#101026'
+    color: "#101026",
   },
 });
