@@ -22,7 +22,7 @@ export default function Dashboard() {
       return;
     }
 
-    navigation.navigate("Order");
+    navigation.navigate("Order", {number, order_id: '9873996b-9bec-4e11-9310-745a788b0eb5'});
   }
 
   return (
