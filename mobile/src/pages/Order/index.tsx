@@ -6,11 +6,13 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { api } from "../../service/api";
 import { ModalPicker } from "../../components/ModalPicker";
+import { ListItem } from "../../components/ListItem";
 
 type RouterDetailParams = {
   Order: {
@@ -29,6 +31,13 @@ type ProductProps = {
   name: string;
 };
 
+type ItemProps = {
+  id: string;
+  product_id: string;
+  name: string;
+  amount: string | number;
+};
+
 type OrderRouteProps = RouteProp<RouterDetailParams, "Order">;
 
 export default function Order() {
@@ -41,11 +50,12 @@ export default function Order() {
   >();
   const [modalCategoryVisible, setModalCategoryVisible] = useState(false);
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductProps[] | []>([]);
   const [productSelec, setProductSelec] = useState<ProductProps | undefined>();
   const [modalProductVisible, setModalProductVisible] = useState(false);
 
   const [amount, setAmount] = useState("1");
+  const [items, setItems] = useState<ItemProps[]>([]);
 
   useEffect(() => {
     async function loadInfo() {
@@ -87,8 +97,26 @@ export default function Order() {
     setCategorySelec(item);
   }
 
-  function handleChangeProduct(item: ProductProps){
-    setProductSelec(item)
+  function handleChangeProduct(item: ProductProps) {
+    setProductSelec(item);
+  }
+
+  //adicionar produto na mesa
+  async function handleAdd() {
+    const response = await api.post("/order/add", {
+      order_id: route.params?.order_id,
+      product_id: productSelec?.id,
+      amount: Number(amount),
+    });
+
+    let data = {
+      id: response.data.id,
+      product_id: productSelec?.id as string,
+      name: productSelec?.name as string,
+      amount: amount,
+    };
+
+    setItems((prev) => [...prev, data]);
   }
 
   return (
@@ -131,13 +159,25 @@ export default function Order() {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity style={styles.buttonAdd}>
+        <TouchableOpacity style={styles.buttonAdd} onPress={handleAdd}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+
+        <TouchableOpacity
+          style={[styles.button, { opacity: items.length === 0 ? 0.3 : 1 }]}
+          disabled={items.length === 0}
+        >
           <Text style={styles.buttonText}>Avançar</Text>
         </TouchableOpacity>
       </View>
+
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={{ flex: 1, marginTop: 24 }}
+        data={items}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <ListItem data={item} />}
+      />
 
       <Modal
         transparent={true}
