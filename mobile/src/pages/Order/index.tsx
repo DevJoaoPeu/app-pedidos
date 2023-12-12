@@ -14,8 +14,8 @@ import { api } from "../../service/api";
 import { ModalPicker } from "../../components/ModalPicker";
 import { ListItem } from "../../components/ListItem";
 
-import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import { StackParamsList } from "../../routes/app.routes"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackParamsList } from "../../routes/app.routes";
 
 type RouterDetailParams = {
   Order: {
@@ -45,7 +45,8 @@ type OrderRouteProps = RouteProp<RouterDetailParams, "Order">;
 
 export default function Order() {
   const route = useRoute<OrderRouteProps>();
-  const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<StackParamsList>>();
 
   const [category, setCategory] = useState<CategoryProps[] | []>([]);
   const [categorySelec, setCategorySelec] = useState<
@@ -133,8 +134,11 @@ export default function Order() {
     setItems(removeItem);
   }
 
-  function handleFinishOrder(){
-    navigation.navigate("FinishOrder")
+  function handleFinishOrder() {
+    navigation.navigate("FinishOrder", {
+      number: route.params?.number,
+      order_id: route.params?.order_id,
+    });
   }
 
   return (
