@@ -2,6 +2,18 @@
 
 Bem-vindo ao repositório do App Pedidos, um sistema abrangente para gerenciar pedidos em restaurantes. Este projeto inclui um frontend web, um aplicativo mobile e um backend robusto, proporcionando uma solução completa para melhorar a eficiência do processo de pedidos em estabelecimentos de alimentos.
 
+<p align="center">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(31).png?raw=true" width="400" height="auto" alt="Descrição da imagem 1">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(32).png?raw=true" width="400" height="auto" alt="Descrição da imagem 2">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(33).png?raw=true" width="400" height="auto" alt="Descrição da imagem 3">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(34).png?raw=true" width="400" height="auto" alt="Descrição da imagem 4">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(35).png?raw=true" width="400" height="auto" alt="Descrição da imagem 5">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(36).png?raw=true" width="400" height="auto" alt="Descrição da imagem 6">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(37).png?raw=true" width="400" height="auto" alt="Descrição da imagem 7">
+  <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(38).png?raw=true" width="400" height="auto" alt="Descrição da imagem 8">
+   <img src="https://github.com/DevJoaoPeu/app-pedidos/blob/main/web/public/Prits-do-app-de-pedidos/Captura%20de%20Tela%20(39).png?raw=true" width="400" height="auto" alt="Descrição da imagem 8">
+</p>
+
 ## Visão Geral
 
 ### Frontend Web (Next.js e Typescript)
